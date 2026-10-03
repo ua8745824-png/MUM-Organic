@@ -130,6 +130,8 @@ const PRODUCTS_DATA = {
 const TRANSLATIONS = {
   en: {
     // Nav & Top Bar
+    brand_name_text: 'MUM <span class="text-amber-600 dark:text-amber-500">ORGANIC</span>',
+    brand_sub_text: 'Maa Jaisa Khalis, Maa Jaisa Pyaar',
     announcement: '🚚 FREE Nationwide Delivery on Orders of 1kg & Above | 100% Money-Back Purity Guarantee',
     tagline_urdu: '"ماں جیسا خالص، ماں جیسا پیار"',
     nav_home: 'Home',
@@ -227,6 +229,8 @@ const TRANSLATIONS = {
   },
   ur: {
     // Nav & Top Bar
+    brand_name_text: 'ایم یو ایم <span class="text-amber-600 dark:text-amber-500">آرگینک</span>',
+    brand_sub_text: 'ماں جیسا خالص، ماں جیسا پیار',
     announcement: '🚚 1 کلو یا اس سے زیادہ پر ملک بھر میں مفت ڈلیوری | 100٪ خالص پن کی گارنٹی',
     tagline_urdu: '"ماں جیسا خالص، ماں جیسا پیار"',
     nav_home: 'ہوم',
@@ -263,7 +267,7 @@ const TRANSLATIONS = {
     hero_img_badge: 'اصلی دانے دار سنہری دیسی گھی',
 
     // Label Anatomy Strip
-    label_strip_title: 'مم آرگینک کا آفیشل مہر اور لیبل ڈیزائن',
+    label_strip_title: 'ایم یو ایم آرگینک کا آفیشل مہر اور لیبل ڈیزائن',
     label_strip_sub: 'ہر اصلی جار پر ہماری روایتی مہر اور ٹیکسلا کے خالص پن کا ثبوت موجود ہوتا ہے',
     label_strip_tag1: '100٪ خالص گولڈ ویکس سیل',
     label_strip_tag2: 'ماں کے ہاتھوں کا پیار و ہانڈی',
@@ -859,7 +863,7 @@ function quickWhatsAppOrder(productId) {
 
   let text = '';
   if (currentLang === 'ur') {
-    text = `السلام علیکم MUM ORGANIC! 🌿\n\nمیں آرڈر دینا چاہتا/چاہتی ہوں:\n📦 آئٹم: *${prod.name}*\n⚖️ وزن: *${prod.weight}*\n💰 قیمت: *PKR ${prod.price.toLocaleString()}*\n🚚 ڈلیوری: *${prod.weightKg >= 1 ? 'مفت ڈلیوری' : 'PKR 250'}*\n\nبراہ کرم ڈلیوری ٹائم کنفرم کریں۔ جزاک اللہ!`;
+    text = `السلام علیکم ایم یو ایم آرگینک (MUM ORGANIC)! 🌿\n\nمیں آرڈر دینا چاہتا/چاہتی ہوں:\n📦 آئٹم: *${prod.name}*\n⚖️ وزن: *${prod.weight}*\n💰 قیمت: *PKR ${prod.price.toLocaleString()}*\n🚚 ڈلیوری: *${prod.weightKg >= 1 ? 'مفت ڈلیوری' : 'PKR 250'}*\n\nبراہ کرم ڈلیوری ٹائم کنفرم کریں۔ جزاک اللہ!`;
   } else {
     text = `Assalam-o-Alaikum MUM ORGANIC! 🌿\n\nI want to order:\n📦 Item: *${prod.name}*\n⚖️ Weight: *${prod.weight}*\n💰 Price: *PKR ${prod.price.toLocaleString()}*\n🚚 Shipping: *${prod.weightKg >= 1 ? 'FREE Delivery' : 'PKR 250'}*\n\nPlease confirm delivery time to my city. JazakAllah!`;
   }
@@ -884,7 +888,7 @@ function checkoutViaWhatsApp() {
 
   let message = '';
   if (currentLang === 'ur') {
-    message = `السلام علیکم MUM ORGANIC! 🌿\nمیں خالص دانے دار دیسی گھی کا آرڈر دینا چاہتا/چاہتی ہوں:\n\n🛒 *آرڈر کی تفصیلات:*\n`;
+    message = `السلام علیکم ایم یو ایم آرگینک (MUM ORGANIC)! 🌿\nمیں خالص دانے دار دیسی گھی کا آرڈر دینا چاہتا/چاہتی ہوں:\n\n🛒 *آرڈر کی تفصیلات:*\n`;
     cart.forEach((item, idx) => {
       const title = item.nameUr || item.name;
       message += `${idx + 1}. ${title} (${item.weight}) x ${item.quantity} = PKR ${(item.price * item.quantity).toLocaleString()}\n`;
@@ -1112,7 +1116,7 @@ function showOrderSuccessModal(order) {
     waBtn.onclick = () => {
       let msg = '';
       if (isRtl) {
-        msg = `السلام علیکم MUM ORGANIC! 🌿\nمیں نے ویب سائٹ پر آرڈر درج کر دیا ہے:\n\n📋 آرڈر ID: #${order.orderId}\n👤 نام: ${order.customer.name}\n📞 فون: ${order.customer.phone}\n📍 شہر: ${order.customer.city}\n🏠 پتہ: ${order.customer.address}\n💰 کل رقم: PKR ${order.totals.grandTotal.toLocaleString()} (COD)\n\nبراہ کرم ٹریکنگ شیئر کریں۔ شکریہ!`;
+        msg = `السلام علیکم ایم یو ایم آرگینک (MUM ORGANIC)! 🌿\nمیں نے ویب سائٹ پر آرڈر درج کر دیا ہے:\n\n📋 آرڈر ID: #${order.orderId}\n👤 نام: ${order.customer.name}\n📞 فون: ${order.customer.phone}\n📍 شہر: ${order.customer.city}\n🏠 پتہ: ${order.customer.address}\n💰 کل رقم: PKR ${order.totals.grandTotal.toLocaleString()} (COD)\n\nبراہ کرم ٹریکنگ شیئر کریں۔ شکریہ!`;
       } else {
         msg = `Assalam-o-Alaikum MUM ORGANIC! 🌿\nI placed an order on your website:\n\n📋 Order ID: #${order.orderId}\n👤 Name: ${order.customer.name}\n📞 Phone: ${order.customer.phone}\n📍 City: ${order.customer.city}\n🏠 Address: ${order.customer.address}\n💰 Total Amount: PKR ${order.totals.grandTotal.toLocaleString()} (COD)\n\nPlease share tracking details when dispatched. Thank you!`;
       }
