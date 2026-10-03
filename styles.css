@@ -146,13 +146,41 @@ html.dark .gold-gradient-text {
 /* Glassmorphism Light & Dark */
 .glass-nav {
   background: rgba(253, 251, 247, 0.94);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 html.dark .glass-nav {
-  background: rgba(12, 10, 9, 0.92);
+  background: rgba(12, 10, 9, 0.94);
   border-bottom-color: rgba(217, 119, 6, 0.2);
+}
+
+/* Nav Link Hover Underline */
+.nav-link {
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d97706, #f59e0b);
+  border-radius: 2px;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+html[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
 }
 
 .glass-card {
