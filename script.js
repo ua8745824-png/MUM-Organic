@@ -131,9 +131,9 @@ const TRANSLATIONS = {
   en: {
     // Nav & Top Bar
     brand_name_text: 'MUM <span class="text-amber-600 dark:text-amber-500">ORGANIC</span>',
-    brand_sub_text: 'Maa Jaisa Khalis, Maa Jaisa Pyaar',
-    announcement: '🚚 FREE Nationwide Delivery on Orders of 1kg & Above | 100% Money-Back Purity Guarantee',
-    tagline_urdu: '"ماں جیسا خالص، ماں جیسا پیار"',
+    brand_sub_text: 'خریدی گئی چیز شوق سے واپس لیتے ہیں',
+    announcement: '🚚 FREE Nationwide Delivery on Orders of 1kg & Above | "خریدی گئی چیز شوق سے واپس لیتے ہیں"',
+    tagline_urdu: '"خریدی گئی چیز شوق سے واپس لیتے ہیں"',
     nav_home: 'Home',
     nav_story: 'Our Story',
     nav_why_us: 'Why Us',
@@ -157,7 +157,7 @@ const TRANSLATIONS = {
     nav_drawer_home: 'Home',
     nav_drawer_home_sub: 'Taxila Village Heritage',
     nav_drawer_story: 'Our Heritage Story',
-    nav_drawer_story_sub: 'Maa Jaisa Khalis Pyaar',
+    nav_drawer_story_sub: 'خریدی گئی چیز شوق سے واپس لیتے ہیں',
     nav_drawer_usps: 'Why Mum Organic',
     nav_drawer_usps_sub: '4-Pillar Purity Promise',
     nav_drawer_process: 'Bilona Farm Process',
@@ -197,7 +197,7 @@ const TRANSLATIONS = {
     hero_badge_lab_sub: 'Purity Guarantee',
     hero_rating_text: '1,450+ Verified Pakistani Mothers',
     hero_guarantee_title: 'Taxila Dairy Farm',
-    hero_guarantee_sub: '100% Money-Back Guarantee',
+    hero_guarantee_sub: 'خریدی گئی چیز شوق سے واپس لیتے ہیں',
     hero_img_badge: 'Signature Danedar Granules',
 
     // Label Anatomy Strip
@@ -264,9 +264,9 @@ const TRANSLATIONS = {
   ur: {
     // Nav & Top Bar
     brand_name_text: 'ایم یو ایم <span class="text-amber-600 dark:text-amber-500">آرگینک</span>',
-    brand_sub_text: 'ماں جیسا خالص، ماں جیسا پیار',
-    announcement: '🚚 1 کلو یا اس سے زیادہ پر ملک بھر میں مفت ڈلیوری | 100٪ خالص پن کی گارنٹی',
-    tagline_urdu: '"ماں جیسا خالص، ماں جیسا پیار"',
+    brand_sub_text: 'خریدی گئی چیز شوق سے واپس لیتے ہیں',
+    announcement: '🚚 1 کلو یا اس سے زیادہ پر ملک بھر میں مفت ڈلیوری | "خریدی گئی چیز شوق سے واپس لیتے ہیں"',
+    tagline_urdu: '"خریدی گئی چیز شوق سے واپس لیتے ہیں"',
     nav_home: 'ہوم',
     nav_story: 'ہماری کہانی',
     nav_why_us: 'کیوں منتخب کریں',
@@ -290,7 +290,7 @@ const TRANSLATIONS = {
     nav_drawer_home: 'ہوم',
     nav_drawer_home_sub: 'ٹیکسلا کا روایتی ورثہ',
     nav_drawer_story: 'ہماری کہانی اور ورثہ',
-    nav_drawer_story_sub: 'ماں جیسا خالص پیار',
+    nav_drawer_story_sub: 'خریدی گئی چیز شوق سے واپس لیتے ہیں',
     nav_drawer_usps: 'کیوں منتخب کریں',
     nav_drawer_usps_sub: '4 بنیادی خالص پن وعدے',
     nav_drawer_process: 'بلونا روایتی طریقہ کار',
@@ -316,7 +316,7 @@ const TRANSLATIONS = {
     hero_headline_1: 'ماں جیسا خالص،',
     hero_headline_2: 'ماں جیسا پیار',
     hero_headline_3: '— 100٪ اصلی دانے دار دیسی گھی',
-    hero_urdu_line: 'خالص مکھن سے تیار کردہ، روایتی خوشبو اور دانے دار مٹھاس سے بھرپور',
+    hero_urdu_line: 'خالص مکھن سے تیار کردہ، دانے دار مٹھاس — "خریدی گئی چیز شوق سے واپس لیتے ہیں"',
     hero_desc: 'اپنے بزرگوں کے زمانے کی سنہری صحت دوبارہ حاصل کریں۔ قدرتی چارہ چرنے والی گائے و بھینس کے دودھ سے دہی جما کر لکڑی کی مدھانی سے مکھن نکال کر دھیمی آنچ پر تیار کردہ دیسی گھی۔ صفر کیمیکل، صفر پام آئل۔',
     hero_cta_order: 'دیسی گھی کا آرڈر دیں (کیش آن ڈلیوری)',
     hero_cta_wa: 'واٹس ایپ پر فوری آرڈر کریں',
@@ -330,7 +330,7 @@ const TRANSLATIONS = {
     hero_badge_lab_sub: '100٪ خالص پن گارنٹی',
     hero_rating_text: '1,450+ مطمئن مائیں اور گھریلو شیفس',
     hero_guarantee_title: 'ٹیکسلا ڈیری فارم',
-    hero_guarantee_sub: '100٪ رقم واپسی کی ضمانت',
+    hero_guarantee_sub: 'خریدی گئی چیز شوق سے واپس لیتے ہیں (100٪ گارنٹی)',
     hero_img_badge: 'اصلی دانے دار سنہری دیسی گھی',
 
     // Label Anatomy Strip
