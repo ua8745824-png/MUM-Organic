@@ -178,42 +178,195 @@
             </span>
           </button>
 
-          <!-- Mobile Hamburger Toggle -->
-          <button id="mobile-menu-toggle" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 hover:bg-amber-50 dark:hover:bg-stone-700 transition active:scale-95 shrink-0" aria-label="Toggle Navigation Menu">
-            <i class="fa-solid fa-bars-staggered text-sm"></i>
+          <!-- Mobile Quick Menu Toggle -->
+          <button id="mobile-menu-toggle" onclick="toggleMobileMenu()" class="lg:hidden h-9 px-2.5 sm:px-3 flex items-center gap-1.5 rounded-xl border border-amber-400/50 bg-amber-500/10 dark:bg-stone-800 text-amber-900 dark:text-amber-300 hover:bg-amber-500/20 dark:hover:bg-stone-700 transition active:scale-95 shrink-0 shadow-xs" aria-label="Toggle Navigation Menu">
+            <i id="mobile-menu-icon" class="fa-solid fa-bars-staggered text-sm transition-transform duration-200"></i>
+            <span class="text-xs font-bold font-sans" data-i18n="nav_menu_label">Menu</span>
           </button>
         </div>
 
       </div>
     </div>
 
-    <!-- Mobile Slide-down Navigation -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-amber-900/10 dark:border-stone-800 bg-white/98 dark:bg-stone-900/98 backdrop-blur-md px-6 py-5 shadow-xl">
-      <div class="flex flex-col space-y-3.5 text-sm font-medium text-stone-800 dark:text-stone-200">
-        <a href="#hero" class="py-1 hover:text-amber-700" data-i18n="nav_home">Home</a>
-        <a href="#story" class="py-1 hover:text-amber-700" data-i18n="nav_story">Our Story & Heritage</a>
-        <a href="#usps" class="py-1 hover:text-amber-700" data-i18n="nav_why_us">Why Us / 4-Pillar Purity Promise</a>
-        <a href="#products" class="py-1 hover:text-amber-700" data-i18n="nav_products">Available Ghee Sizes</a>
-        <a href="#process" class="py-1 hover:text-amber-700" data-i18n="nav_process">Farm-to-Jar Bilona Method</a>
-        <a href="#comparison" class="py-1 hover:text-amber-700" data-i18n="nav_comparison">Market vs Mum Organic</a>
-        <a href="#reviews" class="py-1 hover:text-amber-700" data-i18n="nav_reviews">Customer Testimonials</a>
-        <a href="#faqs" class="py-1 hover:text-amber-700" data-i18n="nav_faqs">Frequently Asked Questions</a>
-        <a href="#checkout" class="py-1 font-bold text-amber-700 dark:text-amber-400" data-i18n="nav_checkout">⚡ Cash on Delivery Checkout</a>
+    <!-- ========================================================================= -->
+    <!-- 2.5 FULL-FEATURED MOBILE QUICK NAVIGATION DRAWER (AVOID SCROLLING)       -->
+    <!-- ========================================================================= -->
+    <div id="mobile-nav-backdrop" class="mobile-nav-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" onclick="closeMobileMenu()"></div>
+
+    <div id="mobile-nav-drawer" class="mobile-nav-drawer fixed top-0 right-0 rtl:right-auto rtl:left-0 bottom-0 w-full sm:max-w-md bg-white dark:bg-stone-900 z-50 shadow-2xl flex flex-col translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out border-l rtl:border-r rtl:border-l-0 border-amber-900/10 dark:border-stone-800">
+      
+      <!-- Drawer Header -->
+      <div class="p-4 sm:p-5 border-b border-amber-200/70 dark:border-stone-800 flex items-center justify-between bg-amber-50/70 dark:bg-stone-850 shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
+            <i class="fa-solid fa-compass text-stone-950"></i>
+          </div>
+          <div>
+            <h3 class="font-serif-luxury font-bold text-base text-stone-900 dark:text-white leading-tight" data-i18n="nav_quick_menu_title">Quick Navigation</h3>
+            <p class="text-[11px] text-amber-800 dark:text-amber-400 font-medium" data-i18n="nav_quick_menu_sub">Tap any section to jump directly without scrolling</p>
+          </div>
+        </div>
+        <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-stone-200/80 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 flex items-center justify-center transition active:scale-90" aria-label="Close Menu">
+          ✕
+        </button>
+      </div>
+
+      <!-- Quick Sections Scrollable Grid -->
+      <div class="flex-1 overflow-y-auto p-4 space-y-4">
         
-        <div class="pt-3 border-t border-stone-100 dark:border-stone-800 flex items-center justify-between gap-2">
-          <button onclick="toggleLanguage()" class="lang-toggle-btn flex-1 py-2 px-3 rounded-xl border border-amber-300 dark:border-stone-700 bg-amber-50 dark:bg-stone-800 text-xs font-bold text-center">
-            Switch Language
+        <!-- Primary Conversion Actions Bar -->
+        <div class="grid grid-cols-2 gap-2.5">
+          <a href="#products" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
+            <div class="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center text-xs shrink-0">
+              <i class="fa-solid fa-jar"></i>
+            </div>
+            <div class="leading-tight text-left rtl:text-right">
+              <span class="block text-stone-950 font-extrabold" data-i18n="nav_drawer_products">Ghee Packs</span>
+              <span class="text-[10px] text-stone-900/80 font-medium" data-i18n="nav_drawer_products_sub">500g, 1kg & 2kg</span>
+            </div>
+          </a>
+
+          <a href="#checkout" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-stone-900 dark:bg-amber-500 text-white dark:text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
+            <div class="w-7 h-7 rounded-lg bg-amber-500 dark:bg-stone-900 text-stone-950 dark:text-amber-400 flex items-center justify-center text-xs shrink-0">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+            <div class="leading-tight text-left rtl:text-right">
+              <span class="block font-extrabold" data-i18n="nav_drawer_cod">Order COD</span>
+              <span class="text-[10px] text-amber-300 dark:text-stone-900 font-medium" data-i18n="nav_drawer_cod_sub">Free Nationwide</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Quick Section Links -->
+        <div class="space-y-1.5">
+          <span class="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-wider px-2 block" data-i18n="nav_quick_jump">Direct Section Jump</span>
+
+          <a href="#hero" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-house"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_home">Home</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_home_sub">Taxila Village Heritage</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+
+          <a href="#story" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-book-open"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_story">Our Heritage Story</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_story_sub">Maa Jaisa Khalis Pyaar</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+
+          <a href="#usps" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-stone-800 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-shield-halved"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_usps">Why Mum Organic</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_usps_sub">4-Pillar Purity Promise</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+
+          <a href="#process" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-fire-burner"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_process">Bilona Farm Process</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_process_sub">Traditional Clay Handi</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+
+          <a href="#comparison" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_comparison">Market vs Mum Organic</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_comparison_sub">Adulteration vs Purity</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+
+          <button onclick="closeMobileMenu(); document.getElementById('purity-test-modal').classList.remove('hidden'); document.body.style.overflow='hidden';" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/40 dark:bg-stone-800/40 text-left rtl:text-right">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-500 text-stone-950 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-flask"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block text-amber-900 dark:text-amber-300" data-i18n="nav_drawer_purity">4 Home Purity Tests</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_purity_sub">Instant DIY Lab Guide</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-amber-200 dark:bg-stone-700 text-stone-900 dark:text-amber-300 text-[10px] font-bold">Guide</span>
           </button>
-          <button onclick="toggleTheme()" class="flex-1 py-2 px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-stone-100 dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5">
-            <i class="theme-toggle-icon fa-solid fa-moon"></i>
+
+          <a href="#reviews" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-600 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-star"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_reviews">Customer Reviews</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_reviews_sub">1,450+ Happy Mothers</span>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 text-[10px] font-bold">4.9 ★</span>
+          </a>
+
+          <a href="#faqs" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+            <div class="flex items-center gap-3">
+              <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
+                <i class="fa-solid fa-circle-question"></i>
+              </span>
+              <div>
+                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_faqs">FAQs & Support</span>
+                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_faqs_sub">Delivery & Purity Details</span>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer Actions -->
+      <div class="p-4 border-t border-amber-200/70 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/90 space-y-2.5 shrink-0">
+        <div class="flex items-center gap-2">
+          <button onclick="toggleLanguage()" class="lang-toggle-btn flex-1 py-2.5 px-3 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
+            <span class="text-xs">🇵🇰</span>
+            <span class="font-urdu">اردو</span>
+          </button>
+          <button onclick="toggleTheme()" class="flex-1 py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
+            <i class="theme-toggle-icon fa-solid fa-moon text-stone-700"></i>
             <span class="theme-toggle-text">Dark Mode</span>
           </button>
         </div>
 
-        <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white font-bold text-center text-xs flex items-center justify-center gap-2 shadow-md">
-          <i class="fa-brands fa-whatsapp text-sm"></i> WhatsApp: +92 339 5691212
+        <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center text-xs flex items-center justify-center gap-2 shadow-md transition">
+          <i class="fa-brands fa-whatsapp text-base"></i>
+          <span>WhatsApp: +92 339 5691212</span>
         </a>
       </div>
+
     </div>
   </header>
 
@@ -1512,10 +1665,56 @@
   </div>
 
   <!-- ========================================================================= -->
+  <!-- 15.5 PERSISTENT MOBILE BOTTOM NAVIGATION BAR (ZERO SCROLLING)             -->
+  <!-- ========================================================================= -->
+  <nav id="mobile-bottom-bar" class="mobile-bottom-bar fixed bottom-0 inset-x-0 z-40 lg:hidden border-t border-amber-900/10 dark:border-stone-800 shadow-2xl transition-all" aria-label="Mobile Navigation">
+    <div class="grid grid-cols-5 h-16 items-center px-2 max-w-md mx-auto">
+      
+      <!-- Tab 1: Home -->
+      <a href="#hero" class="bottom-tab-btn flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 py-1 transition group active:scale-95" aria-label="Go to Home">
+        <i class="fa-solid fa-house text-base mb-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        <span class="text-[10px] font-bold tracking-tight" data-i18n="bottom_nav_home">Home</span>
+      </a>
+
+      <!-- Tab 2: Products -->
+      <a href="#products" class="bottom-tab-btn flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 py-1 transition group active:scale-95" aria-label="View Products">
+        <i class="fa-solid fa-jar text-base mb-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        <span class="text-[10px] font-bold tracking-tight" data-i18n="bottom_nav_products">Products</span>
+      </a>
+
+      <!-- Tab 3: COD Order -->
+      <a href="#checkout" class="bottom-tab-btn flex flex-col items-center justify-center py-1 transition group active:scale-95 relative" aria-label="Quick COD Order">
+        <div class="w-10 h-10 -mt-5 rounded-full bg-gradient-to-tr from-amber-600 to-amber-400 text-stone-950 flex items-center justify-center shadow-lg border-2 border-white dark:border-stone-900 group-hover:scale-110 transition-transform">
+          <i class="fa-solid fa-bolt text-sm"></i>
+        </div>
+        <span class="text-[10px] font-extrabold text-amber-700 dark:text-amber-400 tracking-tight mt-0.5" data-i18n="bottom_nav_cod">Order COD</span>
+      </a>
+
+      <!-- Tab 4: Cart Drawer -->
+      <button onclick="openCartDrawer()" class="bottom-tab-btn flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 py-1 transition group active:scale-95 relative" aria-label="Open Cart">
+        <div class="relative">
+          <i class="fa-solid fa-bag-shopping text-base mb-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+          <span class="cart-count-badge absolute -top-1.5 -right-2.5 w-4 h-4 rounded-full bg-amber-500 text-stone-950 font-black text-[9px] flex items-center justify-center shadow-xs">
+            1
+          </span>
+        </div>
+        <span class="text-[10px] font-bold tracking-tight" data-i18n="bottom_nav_cart">Cart</span>
+      </button>
+
+      <!-- Tab 5: Menu Drawer (Opens Full Quick Navigation) -->
+      <button onclick="toggleMobileMenu()" class="bottom-tab-btn flex flex-col items-center justify-center text-stone-600 dark:text-stone-400 hover:text-amber-600 dark:hover:text-amber-400 py-1 transition group active:scale-95" aria-label="Open Full Menu">
+        <i class="fa-solid fa-compass text-base mb-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+        <span class="text-[10px] font-bold tracking-tight" data-i18n="bottom_nav_menu">Menu</span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- ========================================================================= -->
   <!-- 16. FLOATING WHATSAPP BUTTON                                              -->
   <!-- ========================================================================= -->
-  <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="fixed bottom-6 left-6 rtl:left-auto rtl:right-6 z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 group border-2 border-white/60 pulse-green" aria-label="Chat on WhatsApp">
-    <i class="fa-brands fa-whatsapp text-2xl"></i>
+  <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="floating-wa-btn fixed z-40 bg-emerald-600 hover:bg-emerald-700 text-white p-3 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 transition-all hover:scale-105 active:scale-95 group border-2 border-white/60 pulse-green" aria-label="Chat on WhatsApp">
+    <i class="fa-brands fa-whatsapp text-2xl sm:text-xl"></i>
     <span class="hidden sm:inline text-xs font-bold tracking-wide" data-i18n="nav_whatsapp_btn">
       Order on WhatsApp
     </span>

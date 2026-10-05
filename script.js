@@ -144,6 +144,39 @@ const TRANSLATIONS = {
     nav_faqs: 'FAQs',
     nav_checkout: 'Direct Order',
     nav_whatsapp_btn: 'Order via WhatsApp',
+    nav_menu_label: 'Menu',
+
+    // Mobile Quick Navigation Drawer
+    nav_quick_menu_title: 'Quick Navigation',
+    nav_quick_menu_sub: 'Tap any section to jump directly without scrolling',
+    nav_drawer_products: 'Ghee Packs',
+    nav_drawer_products_sub: '500g, 1kg & 2kg Jars',
+    nav_drawer_cod: 'Order COD',
+    nav_drawer_cod_sub: 'Free Nationwide',
+    nav_quick_jump: 'Direct Section Jump',
+    nav_drawer_home: 'Home',
+    nav_drawer_home_sub: 'Taxila Village Heritage',
+    nav_drawer_story: 'Our Heritage Story',
+    nav_drawer_story_sub: 'Maa Jaisa Khalis Pyaar',
+    nav_drawer_usps: 'Why Mum Organic',
+    nav_drawer_usps_sub: '4-Pillar Purity Promise',
+    nav_drawer_process: 'Bilona Farm Process',
+    nav_drawer_process_sub: 'Traditional Clay Handi',
+    nav_drawer_comparison: 'Market vs Mum Organic',
+    nav_drawer_comparison_sub: 'Adulteration vs Purity',
+    nav_drawer_purity: '4 Home Purity Tests',
+    nav_drawer_purity_sub: 'Instant DIY Lab Guide',
+    nav_drawer_reviews: 'Customer Reviews',
+    nav_drawer_reviews_sub: '1,450+ Happy Mothers',
+    nav_drawer_faqs: 'FAQs & Support',
+    nav_drawer_faqs_sub: 'Delivery & Purity Details',
+
+    // Mobile Bottom Tab Bar
+    bottom_nav_home: 'Home',
+    bottom_nav_products: 'Products',
+    bottom_nav_cod: 'Order COD',
+    bottom_nav_cart: 'Cart',
+    bottom_nav_menu: 'Menu',
     
     // Hero Section
     hero_top_badge: 'Handcrafted in Taxila, Punjab | 100% Traditional Bilona Method',
@@ -243,6 +276,39 @@ const TRANSLATIONS = {
     nav_faqs: 'عام سوالات',
     nav_checkout: 'براہ راست آرڈر',
     nav_whatsapp_btn: 'واٹس ایپ پر آرڈر کریں',
+    nav_menu_label: 'مینو',
+
+    // Mobile Quick Navigation Drawer
+    nav_quick_menu_title: 'فاسٹ نیویگیشن',
+    nav_quick_menu_sub: 'بغیر اسکرول کیے براہِ راست کسی بھی سیکشن پر جائیں',
+    nav_drawer_products: 'دیسی گھی پیک',
+    nav_drawer_products_sub: '500 گرام، 1 کلو اور 2 کلو',
+    nav_drawer_cod: 'کیش آن ڈلیوری آرڈر',
+    nav_drawer_cod_sub: 'ملک بھر میں فری ڈلیوری',
+    nav_quick_jump: 'سیکشنز پر براہِ راست جائیں',
+    nav_drawer_home: 'ہوم',
+    nav_drawer_home_sub: 'ٹیکسلا کا روایتی ورثہ',
+    nav_drawer_story: 'ہماری کہانی اور ورثہ',
+    nav_drawer_story_sub: 'ماں جیسا خالص پیار',
+    nav_drawer_usps: 'کیوں منتخب کریں',
+    nav_drawer_usps_sub: '4 بنیادی خالص پن وعدے',
+    nav_drawer_process: 'بلونا روایتی طریقہ کار',
+    nav_drawer_process_sub: 'مٹی کی ہانڈی و لکڑی کی مدھانی',
+    nav_drawer_comparison: 'مارکیٹ موازنہ',
+    nav_drawer_comparison_sub: 'خالص بمقابلہ ملاوٹ شدہ گھی',
+    nav_drawer_purity: '4 گھریلو خالص پن ٹیسٹ',
+    nav_drawer_purity_sub: 'گھر پر اصلی گھی کی شناخت',
+    nav_drawer_reviews: 'گاہکوں کے ریویوز',
+    nav_drawer_reviews_sub: '1,450+ مطمئن مائیں',
+    nav_drawer_faqs: 'عام سوالات و رہنمائی',
+    nav_drawer_faqs_sub: 'ڈلیوری اور خالص پن کے سوالات',
+
+    // Mobile Bottom Tab Bar
+    bottom_nav_home: 'ہوم',
+    bottom_nav_products: 'پراڈکٹس',
+    bottom_nav_cod: 'آرڈر',
+    bottom_nav_cart: 'کارٹ',
+    bottom_nav_menu: 'مینو',
 
     // Hero Section
     hero_top_badge: 'ٹیکسلا پنجاب میں روایتی بلونا طریقہ پر تیار کردہ | 100٪ خالص',
@@ -451,6 +517,31 @@ function setLanguage(lang) {
   renderCart();
   updateCheckoutSummary();
   applyTheme(currentTheme);
+
+  // Reset drawer offscreen classes based on new text direction
+  const mobileDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileBackdrop = document.getElementById('mobile-nav-backdrop');
+  if (mobileDrawer && (!mobileBackdrop || mobileBackdrop.classList.contains('hidden'))) {
+    if (lang === 'ur') {
+      mobileDrawer.classList.add('-translate-x-full');
+      mobileDrawer.classList.remove('translate-x-full');
+    } else {
+      mobileDrawer.classList.add('translate-x-full');
+      mobileDrawer.classList.remove('-translate-x-full');
+    }
+  }
+
+  const cartDrawer = document.getElementById('cart-drawer');
+  const cartOverlay = document.getElementById('cart-drawer-overlay');
+  if (cartDrawer && (!cartOverlay || cartOverlay.classList.contains('hidden'))) {
+    if (lang === 'ur') {
+      cartDrawer.classList.add('-translate-x-full');
+      cartDrawer.classList.remove('translate-x-full');
+    } else {
+      cartDrawer.classList.add('translate-x-full');
+      cartDrawer.classList.remove('-translate-x-full');
+    }
+  }
 }
 
 // ==========================================
@@ -845,7 +936,13 @@ function closeCartDrawer() {
   const drawer = document.getElementById('cart-drawer');
   const overlay = document.getElementById('cart-drawer-overlay');
   if (drawer && overlay) {
-    drawer.classList.add(currentLang === 'ur' ? '-translate-x-full' : 'translate-x-full');
+    if (currentLang === 'ur') {
+      drawer.classList.add('-translate-x-full');
+      drawer.classList.remove('translate-x-full');
+    } else {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('-translate-x-full');
+    }
     overlay.classList.remove('opacity-100');
     overlay.classList.add('opacity-0');
     setTimeout(() => {
@@ -1136,19 +1233,120 @@ function closeOrderSuccessModal() {
   }
 }
 
-// Setup Event Listeners
-function setupEventListeners() {
-  const mobileToggle = document.getElementById('mobile-menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  if (mobileToggle && mobileMenu) {
-    mobileToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
+// ==========================================
+// MOBILE QUICK NAVIGATION DRAWER CONTROLS
+// ==========================================
+function openMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  const icon = document.getElementById('mobile-menu-icon');
+
+  if (drawer && backdrop) {
+    backdrop.classList.remove('hidden');
+    setTimeout(() => {
+      backdrop.classList.remove('opacity-0');
+      backdrop.classList.add('opacity-100');
+      drawer.classList.remove('translate-x-full');
+      drawer.classList.remove('-translate-x-full');
+    }, 10);
+    document.body.style.overflow = 'hidden';
+
+    if (icon) {
+      icon.classList.remove('fa-bars-staggered');
+      icon.classList.add('fa-xmark');
+    }
+  }
+}
+
+function closeMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const backdrop = document.getElementById('mobile-nav-backdrop');
+  const icon = document.getElementById('mobile-menu-icon');
+
+  if (drawer && backdrop) {
+    if (currentLang === 'ur') {
+      drawer.classList.add('-translate-x-full');
+      drawer.classList.remove('translate-x-full');
+    } else {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('-translate-x-full');
+    }
+    backdrop.classList.remove('opacity-100');
+    backdrop.classList.add('opacity-0');
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+    }, 300);
+    document.body.style.overflow = '';
+
+    if (icon) {
+      icon.classList.remove('fa-xmark');
+      icon.classList.add('fa-bars-staggered');
+    }
+  }
+}
+
+function toggleMobileMenu() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  if (!drawer) return;
+  const isOpen = !drawer.classList.contains('translate-x-full') && !drawer.classList.contains('-translate-x-full');
+  if (isOpen) {
+    closeMobileMenu();
+  } else {
+    openMobileMenu();
+  }
+}
+
+// ==========================================
+// SCROLL-SPY ACTIVE LINK HIGHLIGHTING
+// ==========================================
+function setupScrollSpy() {
+  const sections = ['hero', 'story', 'usps', 'products', 'process', 'comparison', 'reviews', 'faqs', 'checkout'];
+  const navLinks = document.querySelectorAll('header nav a.nav-link');
+  const bottomTabs = document.querySelectorAll('.bottom-tab-btn');
+
+  function onScroll() {
+    const scrollPos = window.scrollY + 120;
+    let currentSectionId = '';
+
+    for (const id of sections) {
+      const el = document.getElementById(id);
+      if (el) {
+        const top = el.offsetTop;
+        const height = el.offsetHeight;
+        if (scrollPos >= top && scrollPos < top + height) {
+          currentSectionId = id;
+          break;
+        }
+      }
+    }
+
+    // Update Desktop Nav Links
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === `#${currentSectionId}`) {
+        link.classList.add('text-amber-700', 'dark:text-amber-400', 'font-bold');
+      } else {
+        link.classList.remove('text-amber-700', 'dark:text-amber-400', 'font-bold');
+      }
     });
-    mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+
+    // Update Bottom Navigation Tabs
+    bottomTabs.forEach(tab => {
+      const href = tab.getAttribute('href');
+      if (href && href === `#${currentSectionId}`) {
+        tab.classList.add('active');
+      } else if (href) {
+        tab.classList.remove('active');
+      }
     });
   }
 
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// Setup Event Listeners
+function setupEventListeners() {
   const promoBtn = document.getElementById('cart-promo-apply-btn');
   const promoInput = document.getElementById('cart-promo-input');
   if (promoBtn && promoInput) {
@@ -1185,6 +1383,28 @@ function setupEventListeners() {
       document.body.style.overflow = '';
     });
   }
+
+  // Global Escape Key Listener for Modals
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeMobileMenu();
+      closeCartDrawer();
+      if (purityModal) {
+        purityModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+      closeOrderSuccessModal();
+    }
+  });
+
+  // Auto-close mobile drawer on window resize to desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 1024) {
+      closeMobileMenu();
+    }
+  });
+
+  setupScrollSpy();
 }
 
 function setupFAQAccordion() {
