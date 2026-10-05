@@ -187,187 +187,6 @@
 
       </div>
     </div>
-
-    <!-- ========================================================================= -->
-    <!-- 2.5 FULL-FEATURED MOBILE QUICK NAVIGATION DRAWER (AVOID SCROLLING)       -->
-    <!-- ========================================================================= -->
-    <div id="mobile-nav-backdrop" class="mobile-nav-overlay fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300" onclick="closeMobileMenu()"></div>
-
-    <div id="mobile-nav-drawer" class="mobile-nav-drawer fixed top-0 right-0 rtl:right-auto rtl:left-0 bottom-0 w-full sm:max-w-md bg-white dark:bg-stone-900 z-50 shadow-2xl flex flex-col translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out border-l rtl:border-r rtl:border-l-0 border-amber-900/10 dark:border-stone-800">
-      
-      <!-- Drawer Header -->
-      <div class="p-4 sm:p-5 border-b border-amber-200/70 dark:border-stone-800 flex items-center justify-between bg-amber-50/70 dark:bg-stone-850 shrink-0">
-        <div class="flex items-center gap-2.5">
-          <div class="w-9 h-9 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
-            <i class="fa-solid fa-compass text-stone-950"></i>
-          </div>
-          <div>
-            <h3 class="font-serif-luxury font-bold text-base text-stone-900 dark:text-white leading-tight" data-i18n="nav_quick_menu_title">Quick Navigation</h3>
-            <p class="text-[11px] text-amber-800 dark:text-amber-400 font-medium" data-i18n="nav_quick_menu_sub">Tap any section to jump directly without scrolling</p>
-          </div>
-        </div>
-        <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-stone-200/80 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 flex items-center justify-center transition active:scale-90" aria-label="Close Menu">
-          ✕
-        </button>
-      </div>
-
-      <!-- Quick Sections Scrollable Grid -->
-      <div class="flex-1 overflow-y-auto p-4 space-y-4">
-        
-        <!-- Primary Conversion Actions Bar -->
-        <div class="grid grid-cols-2 gap-2.5">
-          <a href="#products" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
-            <div class="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center text-xs shrink-0">
-              <i class="fa-solid fa-jar"></i>
-            </div>
-            <div class="leading-tight text-left rtl:text-right">
-              <span class="block text-stone-950 font-extrabold" data-i18n="nav_drawer_products">Ghee Packs</span>
-              <span class="text-[10px] text-stone-900/80 font-medium" data-i18n="nav_drawer_products_sub">500g, 1kg & 2kg</span>
-            </div>
-          </a>
-
-          <a href="#checkout" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-stone-900 dark:bg-amber-500 text-white dark:text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
-            <div class="w-7 h-7 rounded-lg bg-amber-500 dark:bg-stone-900 text-stone-950 dark:text-amber-400 flex items-center justify-center text-xs shrink-0">
-              <i class="fa-solid fa-truck-fast"></i>
-            </div>
-            <div class="leading-tight text-left rtl:text-right">
-              <span class="block font-extrabold" data-i18n="nav_drawer_cod">Order COD</span>
-              <span class="text-[10px] text-amber-300 dark:text-stone-900 font-medium" data-i18n="nav_drawer_cod_sub">Free Nationwide</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- Quick Section Links -->
-        <div class="space-y-1.5">
-          <span class="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-wider px-2 block" data-i18n="nav_quick_jump">Direct Section Jump</span>
-
-          <a href="#hero" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-house"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_home">Home</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_home_sub">Taxila Village Heritage</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-
-          <a href="#story" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-book-open"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_story">Our Heritage Story</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_story_sub">Maa Jaisa Khalis Pyaar</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-
-          <a href="#usps" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-stone-800 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-shield-halved"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_usps">Why Mum Organic</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_usps_sub">4-Pillar Purity Promise</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-
-          <a href="#process" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-fire-burner"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_process">Bilona Farm Process</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_process_sub">Traditional Clay Handi</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-
-          <a href="#comparison" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-scale-balanced"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_comparison">Market vs Mum Organic</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_comparison_sub">Adulteration vs Purity</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-
-          <button onclick="closeMobileMenu(); document.getElementById('purity-test-modal').classList.remove('hidden'); document.body.style.overflow='hidden';" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/40 dark:bg-stone-800/40 text-left rtl:text-right">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-amber-500 text-stone-950 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-flask"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block text-amber-900 dark:text-amber-300" data-i18n="nav_drawer_purity">4 Home Purity Tests</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_purity_sub">Instant DIY Lab Guide</span>
-              </div>
-            </div>
-            <span class="px-2 py-0.5 rounded-full bg-amber-200 dark:bg-stone-700 text-stone-900 dark:text-amber-300 text-[10px] font-bold">Guide</span>
-          </button>
-
-          <a href="#reviews" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-600 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-star"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_reviews">Customer Reviews</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_reviews_sub">1,450+ Happy Mothers</span>
-              </div>
-            </div>
-            <span class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 text-[10px] font-bold">4.9 ★</span>
-          </a>
-
-          <a href="#faqs" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
-            <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
-                <i class="fa-solid fa-circle-question"></i>
-              </span>
-              <div>
-                <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_faqs">FAQs & Support</span>
-                <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_faqs_sub">Delivery & Purity Details</span>
-              </div>
-            </div>
-            <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
-          </a>
-        </div>
-
-      </div>
-
-      <!-- Drawer Footer Actions -->
-      <div class="p-4 border-t border-amber-200/70 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/90 space-y-2.5 shrink-0">
-        <div class="flex items-center gap-2">
-          <button onclick="toggleLanguage()" class="lang-toggle-btn flex-1 py-2.5 px-3 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
-            <span class="text-xs">🇵🇰</span>
-            <span class="font-urdu">اردو</span>
-          </button>
-          <button onclick="toggleTheme()" class="flex-1 py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
-            <i class="theme-toggle-icon fa-solid fa-moon text-stone-700"></i>
-            <span class="theme-toggle-text">Dark Mode</span>
-          </button>
-        </div>
-
-        <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center text-xs flex items-center justify-center gap-2 shadow-md transition">
-          <i class="fa-brands fa-whatsapp text-base"></i>
-          <span>WhatsApp: +92 339 5691212</span>
-        </a>
-      </div>
-
-    </div>
   </header>
 
   <!-- ========================================================================= -->
@@ -1014,6 +833,28 @@
         <div class="lg:col-span-7 bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-8 border border-amber-900/10 dark:border-stone-800 shadow-xl">
           <form id="cod-checkout-form" class="space-y-5">
             
+            <!-- 🛒 Live Selected Cart Items Review Strip (So Seller Never Asks Again) -->
+            <div class="bg-amber-50/90 dark:bg-stone-850 p-4 rounded-2xl border border-amber-300 dark:border-amber-500/30 shadow-xs">
+              <div class="flex items-center justify-between border-b border-amber-200 dark:border-stone-700 pb-2.5 mb-3">
+                <div class="flex items-center gap-2">
+                  <span class="w-6 h-6 rounded-lg bg-amber-500 text-stone-950 flex items-center justify-center text-xs font-bold shrink-0">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                  </span>
+                  <h4 class="font-bold text-xs sm:text-sm text-stone-900 dark:text-white" data-i18n="checkout_selected_items_title">
+                    Selected Ghee Items in Your Cart
+                  </h4>
+                </div>
+                <button type="button" onclick="openCartDrawer()" class="text-xs text-amber-700 dark:text-amber-400 font-bold hover:underline flex items-center gap-1 shrink-0" data-i18n="checkout_edit_cart">
+                  <i class="fa-solid fa-pen-to-square text-[10px]"></i> Edit Cart
+                </button>
+              </div>
+
+              <!-- Live items list populated dynamically by JS -->
+              <div id="checkout-form-items-list" class="space-y-2">
+                <!-- JS dynamically injects selected cart items with thumbnails, weights, quantities and pricing -->
+              </div>
+            </div>
+
             <div class="flex items-center justify-between border-b border-stone-100 dark:border-stone-800 pb-3">
               <h3 class="font-serif-luxury text-lg font-bold text-stone-900 dark:text-white flex items-center gap-2">
                 <i class="fa-solid fa-address-card text-amber-600"></i> <span data-i18n="checkout_shipping_details">Shipping Details</span>
@@ -1464,6 +1305,187 @@
 
     </div>
   </footer>
+
+  <!-- ========================================================================= -->
+  <!-- 12.5 FULL-FEATURED MOBILE QUICK NAVIGATION DRAWER (ZERO SCROLLING)       -->
+  <!-- ========================================================================= -->
+  <div id="mobile-nav-backdrop" class="mobile-nav-overlay fixed inset-0 bg-black/65 backdrop-blur-md z-[99] hidden opacity-0 transition-opacity duration-300" onclick="closeMobileMenu()"></div>
+
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer fixed inset-y-0 right-0 rtl:right-auto rtl:left-0 w-full sm:max-w-md bg-white dark:bg-stone-900 z-[100] shadow-2xl flex flex-col translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-out border-l rtl:border-r rtl:border-l-0 border-amber-900/10 dark:border-stone-800">
+    
+    <!-- Drawer Header -->
+    <div class="p-4 sm:p-5 border-b border-amber-200/70 dark:border-stone-800 flex items-center justify-between bg-amber-50/70 dark:bg-stone-850 shrink-0">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-amber-500 text-stone-950 flex items-center justify-center font-bold text-sm shadow-xs shrink-0">
+          <i class="fa-solid fa-compass text-stone-950"></i>
+        </div>
+        <div>
+          <h3 class="font-serif-luxury font-bold text-base text-stone-900 dark:text-white leading-tight" data-i18n="nav_quick_menu_title">Quick Navigation</h3>
+          <p class="text-[11px] text-amber-800 dark:text-amber-400 font-medium" data-i18n="nav_quick_menu_sub">Tap any section to jump directly without scrolling</p>
+        </div>
+      </div>
+      <button onclick="closeMobileMenu()" class="w-8 h-8 rounded-full bg-stone-200/80 dark:bg-stone-800 hover:bg-stone-300 dark:hover:bg-stone-700 text-stone-700 dark:text-stone-300 flex items-center justify-center transition active:scale-90" aria-label="Close Menu">
+        ✕
+      </button>
+    </div>
+
+    <!-- Quick Sections Scrollable Grid -->
+    <div class="flex-1 overflow-y-auto p-4 space-y-4">
+      
+      <!-- Primary Conversion Actions Bar -->
+      <div class="grid grid-cols-2 gap-2.5">
+        <a href="#products" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-600 text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
+          <div class="w-7 h-7 rounded-lg bg-stone-950 text-amber-400 flex items-center justify-center text-xs shrink-0">
+            <i class="fa-solid fa-jar"></i>
+          </div>
+          <div class="leading-tight text-left rtl:text-right">
+            <span class="block text-stone-950 font-extrabold" data-i18n="nav_drawer_products">Ghee Packs</span>
+            <span class="text-[10px] text-stone-900/80 font-medium" data-i18n="nav_drawer_products_sub">500g, 1kg & 2kg</span>
+          </div>
+        </a>
+
+        <a href="#checkout" onclick="closeMobileMenu()" class="p-3 rounded-2xl bg-stone-900 dark:bg-amber-500 text-white dark:text-stone-950 font-bold text-xs flex items-center gap-2.5 shadow-sm active:scale-98 transition">
+          <div class="w-7 h-7 rounded-lg bg-amber-500 dark:bg-stone-900 text-stone-950 dark:text-amber-400 flex items-center justify-center text-xs shrink-0">
+            <i class="fa-solid fa-truck-fast"></i>
+          </div>
+          <div class="leading-tight text-left rtl:text-right">
+            <span class="block font-extrabold" data-i18n="nav_drawer_cod">Order COD</span>
+            <span class="text-[10px] text-amber-300 dark:text-stone-900 font-medium" data-i18n="nav_drawer_cod_sub">Free Nationwide</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Quick Section Links -->
+      <div class="space-y-1.5">
+        <span class="text-[10px] font-bold text-stone-400 dark:text-stone-500 uppercase tracking-wider px-2 block" data-i18n="nav_quick_jump">Direct Section Jump</span>
+
+        <a href="#hero" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-house"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_home">Home</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_home_sub">Taxila Village Heritage</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+
+        <a href="#story" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-book-open"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_story">Our Heritage Story</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_story_sub">Maa Jaisa Khalis Pyaar</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+
+        <a href="#usps" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-emerald-100 dark:bg-stone-800 text-emerald-700 dark:text-emerald-400 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-shield-halved"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_usps">Why Mum Organic</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_usps_sub">4-Pillar Purity Promise</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+
+        <a href="#process" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-fire-burner"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_process">Bilona Farm Process</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_process_sub">Traditional Clay Handi</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+
+        <a href="#comparison" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-scale-balanced"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_comparison">Market vs Mum Organic</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_comparison_sub">Adulteration vs Purity</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+
+        <button type="button" onclick="closeMobileMenu(); document.getElementById('purity-test-modal').classList.remove('hidden'); document.body.style.overflow='hidden';" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-amber-300/60 dark:border-amber-500/30 bg-amber-50/40 dark:bg-stone-800/40 text-left rtl:text-right">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-500 text-stone-950 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-flask"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block text-amber-900 dark:text-amber-300" data-i18n="nav_drawer_purity">4 Home Purity Tests</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_purity_sub">Instant DIY Lab Guide</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-amber-200 dark:bg-stone-700 text-stone-900 dark:text-amber-300 text-[10px] font-bold">Guide</span>
+        </button>
+
+        <a href="#reviews" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-amber-100 dark:bg-stone-800 text-amber-600 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-star"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_reviews">Customer Reviews</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_reviews_sub">1,450+ Happy Mothers</span>
+            </div>
+          </div>
+          <span class="px-2 py-0.5 rounded-full bg-amber-100 dark:bg-stone-800 text-amber-700 dark:text-amber-400 text-[10px] font-bold">4.9 ★</span>
+        </a>
+
+        <a href="#faqs" onclick="closeMobileMenu()" class="flex items-center justify-between p-3 rounded-xl hover:bg-amber-50 dark:hover:bg-stone-800 text-stone-800 dark:text-stone-200 transition border border-transparent hover:border-amber-200 dark:hover:border-stone-700">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300 flex items-center justify-center text-xs">
+              <i class="fa-solid fa-circle-question"></i>
+            </span>
+            <div>
+              <span class="font-bold text-xs sm:text-sm block" data-i18n="nav_drawer_faqs">FAQs & Support</span>
+              <span class="text-[10px] text-stone-500 dark:text-stone-400" data-i18n="nav_drawer_faqs_sub">Delivery & Purity Details</span>
+            </div>
+          </div>
+          <i class="fa-solid fa-chevron-right rtl:rotate-180 text-stone-400 text-xs"></i>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 border-t border-amber-200/70 dark:border-stone-800 bg-stone-50 dark:bg-stone-900/90 space-y-2.5 shrink-0">
+      <div class="flex items-center gap-2">
+        <button onclick="toggleLanguage()" class="lang-toggle-btn flex-1 py-2.5 px-3 rounded-xl border border-amber-300 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
+          <span class="text-xs">🇵🇰</span>
+          <span class="font-urdu">اردو</span>
+        </button>
+        <button onclick="toggleTheme()" class="flex-1 py-2.5 px-3 rounded-xl border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-xs font-bold text-center flex items-center justify-center gap-1.5 shadow-xs">
+          <i class="theme-toggle-icon fa-solid fa-moon text-stone-700"></i>
+          <span class="theme-toggle-text">Dark Mode</span>
+        </button>
+      </div>
+
+      <a href="https://wa.me/923395691212" target="_blank" rel="noopener noreferrer" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-center text-xs flex items-center justify-center gap-2 shadow-md transition">
+        <i class="fa-brands fa-whatsapp text-base"></i>
+        <span>WhatsApp: +92 339 5691212</span>
+      </a>
+    </div>
+
+  </div>
 
   <!-- ========================================================================= -->
   <!-- 13. SLIDE-OVER CART DRAWER                                                -->

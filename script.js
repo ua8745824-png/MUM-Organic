@@ -177,7 +177,7 @@ const TRANSLATIONS = {
     bottom_nav_cod: 'Order COD',
     bottom_nav_cart: 'Cart',
     bottom_nav_menu: 'Menu',
-    
+
     // Hero Section
     hero_top_badge: 'Handcrafted in Taxila, Punjab | 100% Traditional Bilona Method',
     hero_headline_1: 'Maa Jaisa Khalis,',
@@ -221,6 +221,7 @@ const TRANSLATIONS = {
     checkout_badge: '⚡ Quick & Safe Ordering',
     checkout_title: 'Direct Cash on Delivery Checkout',
     checkout_sub: 'No credit card needed. Pay cash when the parcel arrives at your doorstep anywhere in Pakistan.',
+    checkout_selected_items_title: 'Selected Ghee Items in Your Cart',
     checkout_shipping_details: 'Shipping Details',
     checkout_all_fields_req: '* All fields required',
     checkout_name_label: 'Full Name *',
@@ -353,6 +354,7 @@ const TRANSLATIONS = {
     checkout_badge: '⚡ آسان اور محفوظ خریداری',
     checkout_title: 'براہِ راست کیش آن ڈلیوری آرڈر فارم',
     checkout_sub: 'کسی کارڈ کی ضرورت نہیں۔ پارسل اپنے گھر وصول کرتے وقت رقم ادا کریں۔',
+    checkout_selected_items_title: 'آپ کے منتخب کردہ دیسی گھی آئٹمز',
     checkout_shipping_details: 'ڈلیوری کی تفصیلات',
     checkout_all_fields_req: '* تمام معلومات درج کرنا لازمی ہیں',
     checkout_name_label: 'آپ کا مکمل نام *',
@@ -491,7 +493,7 @@ function setLanguage(lang) {
   // Update language toggle button text
   const langToggleButtons = document.querySelectorAll('.lang-toggle-btn');
   langToggleButtons.forEach(btn => {
-    btn.innerHTML = (lang === 'ur') ? 
+    btn.innerHTML = (lang === 'ur') ?
       '<span class="flex items-center gap-1.5"><span class="text-sm">🇬🇧</span> <span class="font-sans font-bold text-xs">English</span></span>' :
       '<span class="flex items-center gap-1.5"><span class="text-sm">🇵🇰</span> <span class="font-urdu font-bold text-xs">اردو</span></span>';
   });
@@ -557,7 +559,7 @@ function renderProducts() {
     const discount = Math.round(((prod.originalPrice - prod.price) / prod.originalPrice) * 100);
     const isPopular = prod.id === 'mum-1kg';
     const isRtl = currentLang === 'ur';
-    
+
     return `
       <div class="product-card group relative bg-white dark:bg-stone-900 rounded-3xl p-6 sm:p-7 transition-all duration-300 border ${isPopular ? 'border-amber-500 shadow-xl ring-2 ring-amber-500/20' : 'border-amber-900/10 dark:border-amber-500/20 shadow-md hover:shadow-xl'} flex flex-col justify-between" data-id="${prod.id}">
         ${isPopular ? `
@@ -569,11 +571,10 @@ function renderProducts() {
         <div>
           <!-- Product Badge & Discount -->
           <div class="flex items-center justify-between gap-2 mb-4">
-            <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full ${
-              prod.badgeType === 'primary' ? 'bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/60 dark:text-amber-300' :
-              prod.badgeType === 'special' ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300' :
-              'bg-stone-100 text-stone-800 border border-stone-200 dark:bg-stone-800 dark:text-stone-300'
-            }">
+            <span class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1 rounded-full ${prod.badgeType === 'primary' ? 'bg-amber-100 text-amber-900 border border-amber-300 dark:bg-amber-950/60 dark:text-amber-300' :
+        prod.badgeType === 'special' ? 'bg-emerald-100 text-emerald-900 border border-emerald-300 dark:bg-emerald-950/60 dark:text-emerald-300' :
+          'bg-stone-100 text-stone-800 border border-stone-200 dark:bg-stone-800 dark:text-stone-300'
+      }">
               <i class="fa-solid fa-sparkles text-amber-600 text-[10px]"></i> ${prod.badge}
             </span>
             <span class="text-xs font-bold text-red-600 bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 px-2.5 py-0.5 rounded-full">
@@ -696,10 +697,10 @@ function addToCart(productId, quantity = 1) {
 
   saveCart();
   const itemName = (currentLang === 'ur' && prodUr) ? prodUr.shortName : prodEn.shortName;
-  const msg = (currentLang === 'ur') ? 
-    `آپ کے کارٹ میں ${quantity}x ${itemName} شامل کر دیا گیا ہے!` : 
+  const msg = (currentLang === 'ur') ?
+    `آپ کے کارٹ میں ${quantity}x ${itemName} شامل کر دیا گیا ہے!` :
     `Added ${quantity}x ${itemName} to your cart!`;
-  
+
   showToast(msg, 'success');
   openCartDrawer();
 }
@@ -814,7 +815,7 @@ function renderCart() {
     if (totals.isFreeShipping) {
       shippingProgress.style.width = '100%';
       shippingProgress.className = 'h-2 rounded-full bg-emerald-500 transition-all duration-500';
-      shippingText.innerHTML = isRtl ? 
+      shippingText.innerHTML = isRtl ?
         '<span class="text-emerald-700 dark:text-emerald-400 font-bold"><i class="fa-solid fa-check-circle"></i> مبارک ہو! آپ نے مفت ڈلیوری حاصل کر لی ہے!</span>' :
         '<span class="text-emerald-700 dark:text-emerald-400 font-bold"><i class="fa-solid fa-check-circle"></i> Congratulations! You unlocked FREE Delivery!</span>';
     } else {
@@ -837,8 +838,8 @@ function renderCart() {
 
   if (subtotalEl) subtotalEl.textContent = `PKR ${totals.subtotal.toLocaleString()}`;
   if (shippingEl) {
-    shippingEl.innerHTML = totals.isFreeShipping ? 
-      `<span class="text-emerald-600 font-bold uppercase tracking-wider text-xs">${isRtl ? 'مفت' : 'FREE'}</span>` : 
+    shippingEl.innerHTML = totals.isFreeShipping ?
+      `<span class="text-emerald-600 font-bold uppercase tracking-wider text-xs">${isRtl ? 'مفت' : 'FREE'}</span>` :
       `PKR ${totals.shippingFee.toLocaleString()}`;
   }
 
@@ -964,7 +965,7 @@ function quickWhatsAppOrder(productId) {
   } else {
     text = `Assalam-o-Alaikum MUM ORGANIC! 🌿\n\nI want to order:\n📦 Item: *${prod.name}*\n⚖️ Weight: *${prod.weight}*\n💰 Price: *PKR ${prod.price.toLocaleString()}*\n🚚 Shipping: *${prod.weightKg >= 1 ? 'FREE Delivery' : 'PKR 250'}*\n\nPlease confirm delivery time to my city. JazakAllah!`;
   }
-  
+
   const waUrl = `https://wa.me/923395691212?text=${encodeURIComponent(text)}`;
   window.open(waUrl, '_blank');
 }
@@ -1056,13 +1057,14 @@ function populateCheckoutCityDropdown() {
   const list = (currentLang === 'ur') ? citiesUr : citiesEn;
   const placeholder = (currentLang === 'ur') ? 'شہر / ضلع منتخب کریں' : 'Select Delivery City / District';
 
-  select.innerHTML = `<option value="">${placeholder}</option>` + 
+  select.innerHTML = `<option value="">${placeholder}</option>` +
     list.map(c => `<option value="${c}">${c}</option>`).join('');
 }
 
-// Sync Checkout Summary Box with Cart
+// Sync Checkout Summary Box & Checkout Form Items List with Cart
 function updateCheckoutSummary() {
   const container = document.getElementById('checkout-summary-items');
+  const formItemsList = document.getElementById('checkout-form-items-list');
   const subtotalEl = document.getElementById('checkout-subtotal');
   const discountRow = document.getElementById('checkout-discount-row');
   const discountEl = document.getElementById('checkout-discount');
@@ -1070,44 +1072,89 @@ function updateCheckoutSummary() {
   const totalEl = document.getElementById('checkout-total');
   const isRtl = currentLang === 'ur';
 
-  if (!container) return;
-
   const totals = calculateCartTotals();
 
-  if (cart.length === 0) {
-    container.innerHTML = `
-      <div class="text-center py-6 text-stone-500 text-sm">
-        <i class="fa-solid fa-cart-shopping text-3xl text-amber-300 mb-2 block"></i>
-        ${isRtl ? 'آپ کا آرڈر خالی ہے۔ اوپر دی گئی لسٹ سے دیسی گھی منتخب کریں۔' : 'Your order is empty. Please select a jar from products above.'}
-        <a href="#products" class="text-amber-700 dark:text-amber-400 font-bold underline block mt-2">${isRtl ? 'پراڈکٹس دیکھیں' : 'View Ghee Sizes'}</a>
-      </div>
-    `;
-    if (subtotalEl) subtotalEl.textContent = 'PKR 0';
-    if (shippingEl) shippingEl.textContent = 'PKR 0';
-    if (totalEl) totalEl.textContent = 'PKR 0';
-    return;
+  // 1. Populate Live Selected Items in Checkout Form (Left side)
+  if (formItemsList) {
+    if (cart.length === 0) {
+      formItemsList.innerHTML = `
+        <div class="p-3 rounded-xl bg-white/90 dark:bg-stone-800 text-center text-xs text-stone-500 dark:text-stone-400 border border-amber-200/50 dark:border-stone-700">
+          <i class="fa-solid fa-circle-exclamation text-amber-500 mr-1"></i>
+          <span>${isRtl ? 'آپ کا کارٹ ابھی خالی ہے۔ براہ کرم اوپر سے دیسی گھی سائز منتخب کریں۔' : 'Your cart is empty. Please choose a pure ghee pack above.'}</span>
+          <a href="#products" class="text-amber-700 dark:text-amber-400 font-bold underline ml-1.5 inline-block">${isRtl ? 'پراڈکٹس دیکھیں' : 'View Products'}</a>
+        </div>
+      `;
+    } else {
+      formItemsList.innerHTML = cart.map(item => {
+        const title = (isRtl && item.nameUr) ? item.nameUr : item.name;
+        return `
+          <div class="flex items-center justify-between gap-3 p-2.5 rounded-xl bg-white dark:bg-stone-800 border border-amber-200/70 dark:border-stone-700 shadow-xs">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <img src="${item.image}" alt="${title}" class="w-11 h-11 rounded-lg object-cover border border-amber-200 dark:border-stone-700 shrink-0" />
+              <div class="min-w-0">
+                <h5 class="font-bold text-stone-900 dark:text-white text-xs truncate">${title}</h5>
+                <div class="flex items-center gap-2 text-[11px] text-stone-500 dark:text-stone-400 mt-0.5">
+                  <span class="bg-amber-100 dark:bg-amber-950/80 text-amber-900 dark:text-amber-300 font-bold px-1.5 py-0.5 rounded text-[10px]">${item.weight}</span>
+                  <span>•</span>
+                  <span class="font-medium">PKR ${item.price.toLocaleString()} × ${item.quantity}</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <div class="flex items-center border border-amber-300 dark:border-stone-600 rounded-lg bg-stone-50 dark:bg-stone-900 overflow-hidden shadow-2xs">
+                <button type="button" onclick="updateQuantity('${item.id}', -1)" class="w-6 h-6 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-amber-700 hover:bg-amber-50 dark:hover:bg-stone-800 text-xs" title="Decrease">
+                  <i class="fa-solid fa-minus text-[10px]"></i>
+                </button>
+                <span class="w-6 text-center font-bold text-xs text-stone-800 dark:text-stone-200">${item.quantity}</span>
+                <button type="button" onclick="updateQuantity('${item.id}', 1)" class="w-6 h-6 flex items-center justify-center text-stone-600 dark:text-stone-300 hover:text-amber-700 hover:bg-amber-50 dark:hover:bg-stone-800 text-xs" title="Increase">
+                  <i class="fa-solid fa-plus text-[10px]"></i>
+                </button>
+              </div>
+              <span class="font-bold text-stone-900 dark:text-amber-400 text-xs w-20 text-right rtl:text-left">PKR ${(item.price * item.quantity).toLocaleString()}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
   }
 
-  container.innerHTML = cart.map(item => {
-    const title = (isRtl && item.nameUr) ? item.nameUr : item.name;
-    return `
-      <div class="flex items-center justify-between text-xs py-2 border-b border-amber-100/80 dark:border-stone-700">
-        <div class="flex items-center gap-2">
-          <img src="${item.image}" alt="${title}" class="w-8 h-8 rounded-lg object-cover border border-amber-200 dark:border-stone-700" />
-          <div>
-            <span class="font-semibold text-stone-900 dark:text-white block">${title}</span>
-            <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'تعداد:' : 'Qty:'} ${item.quantity}</span>
-          </div>
+  // 2. Populate Order Summary Sidebar (Right side)
+  if (container) {
+    if (cart.length === 0) {
+      container.innerHTML = `
+        <div class="text-center py-6 text-stone-500 text-sm">
+          <i class="fa-solid fa-cart-shopping text-3xl text-amber-300 mb-2 block"></i>
+          ${isRtl ? 'آپ کا آرڈر خالی ہے۔ اوپر دی گئی لسٹ سے دیسی گھی منتخب کریں۔' : 'Your order is empty. Please select a jar from products above.'}
+          <a href="#products" class="text-amber-700 dark:text-amber-400 font-bold underline block mt-2">${isRtl ? 'پراڈکٹس دیکھیں' : 'View Ghee Sizes'}</a>
         </div>
-        <span class="font-bold text-stone-900 dark:text-amber-400">PKR ${(item.price * item.quantity).toLocaleString()}</span>
-      </div>
-    `;
-  }).join('');
+      `;
+      if (subtotalEl) subtotalEl.textContent = 'PKR 0';
+      if (shippingEl) shippingEl.textContent = 'PKR 0';
+      if (totalEl) totalEl.textContent = 'PKR 0';
+      return;
+    }
+
+    container.innerHTML = cart.map(item => {
+      const title = (isRtl && item.nameUr) ? item.nameUr : item.name;
+      return `
+        <div class="flex items-center justify-between text-xs py-2 border-b border-amber-100/80 dark:border-stone-700">
+          <div class="flex items-center gap-2">
+            <img src="${item.image}" alt="${title}" class="w-8 h-8 rounded-lg object-cover border border-amber-200 dark:border-stone-700" />
+            <div>
+              <span class="font-semibold text-stone-900 dark:text-white block">${title} (${item.weight})</span>
+              <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'تعداد:' : 'Qty:'} ${item.quantity}</span>
+            </div>
+          </div>
+          <span class="font-bold text-stone-900 dark:text-amber-400">PKR ${(item.price * item.quantity).toLocaleString()}</span>
+        </div>
+      `;
+    }).join('');
+  }
 
   if (subtotalEl) subtotalEl.textContent = `PKR ${totals.subtotal.toLocaleString()}`;
   if (shippingEl) {
-    shippingEl.innerHTML = totals.isFreeShipping ? 
-      `<span class="text-emerald-700 dark:text-emerald-400 font-bold uppercase">${isRtl ? 'مفت' : 'FREE'}</span>` : 
+    shippingEl.innerHTML = totals.isFreeShipping ?
+      `<span class="text-emerald-700 dark:text-emerald-400 font-bold uppercase">${isRtl ? 'مفت' : 'FREE'}</span>` :
       `PKR ${totals.shippingFee.toLocaleString()}`;
   }
 
@@ -1171,6 +1218,19 @@ function showOrderSuccessModal(order) {
 
   const isRtl = currentLang === 'ur';
 
+  // Build items list HTML for order confirmation modal
+  const itemsHtml = order.items.map(item => {
+    const title = (isRtl && item.nameUr) ? item.nameUr : item.name;
+    return `
+      <div class="flex justify-between items-center text-xs py-1">
+        <span class="font-medium text-stone-800 dark:text-stone-200">
+          • ${title} (${item.weight}) <strong class="text-amber-700 dark:text-amber-400">× ${item.quantity}</strong>
+        </span>
+        <span class="font-bold text-stone-900 dark:text-amber-400">PKR ${(item.price * item.quantity).toLocaleString()}</span>
+      </div>
+    `;
+  }).join('');
+
   modalContent.innerHTML = `
     <div class="bg-amber-50/70 dark:bg-stone-800/90 p-4 rounded-2xl border border-amber-200/80 dark:border-amber-500/30 mb-4 ${isRtl ? 'text-right' : 'text-left'} text-xs space-y-2">
       <div class="flex justify-between border-b border-amber-200/60 dark:border-stone-700 pb-2">
@@ -1186,10 +1246,26 @@ function showOrderSuccessModal(order) {
         <span class="font-semibold text-stone-900 dark:text-white">${order.customer.phone}</span>
       </div>
       <div class="flex justify-between">
-        <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'پتہ:' : 'Delivery Address:'}</span>
+        <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'شہر و پتہ:' : 'City & Address:'}</span>
         <span class="font-semibold text-stone-900 dark:text-white">${order.customer.address}, ${order.customer.city}</span>
       </div>
-      <div class="flex justify-between border-t border-amber-200/60 dark:border-stone-700 pt-2">
+      ${order.customer.notes ? `
+      <div class="flex justify-between">
+        <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'ہدایات:' : 'Instructions:'}</span>
+        <span class="font-medium text-stone-700 dark:text-stone-300 italic">${order.customer.notes}</span>
+      </div>` : ''}
+
+      <!-- Detailed Items Breakdown in Confirmation Modal -->
+      <div class="border-t border-b border-amber-200/60 dark:border-stone-700 py-2.5 my-2">
+        <span class="text-[11px] font-bold text-amber-800 dark:text-amber-300 block mb-1.5 uppercase tracking-wide">
+          <i class="fa-solid fa-basket-shopping mr-1"></i> ${isRtl ? 'منتخب کردہ آئٹمز:' : 'Ordered Items:'}
+        </span>
+        <div class="space-y-1">
+          ${itemsHtml}
+        </div>
+      </div>
+
+      <div class="flex justify-between">
         <span class="text-stone-500 dark:text-stone-400">${isRtl ? 'ادائیگی کا طریقہ:' : 'Payment Mode:'}</span>
         <span class="font-bold text-emerald-800 dark:text-emerald-400">${isRtl ? 'کیش آن ڈلیوری (COD)' : 'Cash on Delivery (COD)'}</span>
       </div>
@@ -1211,11 +1287,17 @@ function showOrderSuccessModal(order) {
   const waBtn = document.getElementById('modal-wa-confirm-btn');
   if (waBtn) {
     waBtn.onclick = () => {
+      let itemsListText = '';
+      order.items.forEach((item, idx) => {
+        const title = (isRtl && item.nameUr) ? item.nameUr : item.name;
+        itemsListText += `${idx + 1}. ${title} (${item.weight}) x ${item.quantity} = PKR ${(item.price * item.quantity).toLocaleString()}\n`;
+      });
+
       let msg = '';
       if (isRtl) {
-        msg = `السلام علیکم ایم یو ایم آرگینک (MUM ORGANIC)! 🌿\nمیں نے ویب سائٹ پر آرڈر درج کر دیا ہے:\n\n📋 آرڈر ID: #${order.orderId}\n👤 نام: ${order.customer.name}\n📞 فون: ${order.customer.phone}\n📍 شہر: ${order.customer.city}\n🏠 پتہ: ${order.customer.address}\n💰 کل رقم: PKR ${order.totals.grandTotal.toLocaleString()} (COD)\n\nبراہ کرم ٹریکنگ شیئر کریں۔ شکریہ!`;
+        msg = `السلام علیکم ایم یو ایم آرگینک (MUM ORGANIC)! 🌿\nمیں نے ویب سائٹ پر کیش آن ڈلیوری آرڈر درج کر دیا ہے:\n\n📋 *آرڈر ID:* #${order.orderId}\n👤 *نام:* ${order.customer.name}\n📞 *فون:* ${order.customer.phone}\n📍 *شہر:* ${order.customer.city}\n🏠 *پتہ:* ${order.customer.address}${order.customer.notes ? `\n📝 *ہدایات:* ${order.customer.notes}` : ''}\n\n🛒 *منتخب کردہ آئٹمز:*\n${itemsListText}\n💵 *سب ٹوٹل:* PKR ${order.totals.subtotal.toLocaleString()}${order.totals.discountAmount > 0 ? `\n🎁 *ڈسکاؤنٹ:* -PKR ${order.totals.discountAmount.toLocaleString()}` : ''}\n🚚 *ڈلیوری:* ${order.totals.isFreeShipping ? 'مفت ملک گیر ڈلیوری' : `PKR ${order.totals.shippingFee.toLocaleString()}`}\n💰 *کل واجب الادا رقم (COD):* *PKR ${order.totals.grandTotal.toLocaleString()}*\n\nبراہ کرم میرا آرڈر کنفرم کریں۔ جزاک اللہ!`;
       } else {
-        msg = `Assalam-o-Alaikum MUM ORGANIC! 🌿\nI placed an order on your website:\n\n📋 Order ID: #${order.orderId}\n👤 Name: ${order.customer.name}\n📞 Phone: ${order.customer.phone}\n📍 City: ${order.customer.city}\n🏠 Address: ${order.customer.address}\n💰 Total Amount: PKR ${order.totals.grandTotal.toLocaleString()} (COD)\n\nPlease share tracking details when dispatched. Thank you!`;
+        msg = `Assalam-o-Alaikum MUM ORGANIC! 🌿\nI have placed a Cash on Delivery order on your website:\n\n📋 *Order ID:* #${order.orderId}\n👤 *Name:* ${order.customer.name}\n📞 *Phone:* ${order.customer.phone}\n📍 *City:* ${order.customer.city}\n🏠 *Address:* ${order.customer.address}${order.customer.notes ? `\n📝 *Note:* ${order.customer.notes}` : ''}\n\n🛒 *ORDERED ITEMS:*\n${itemsListText}\n💵 *Subtotal:* PKR ${order.totals.subtotal.toLocaleString()}${order.totals.discountAmount > 0 ? `\n🎁 *Discount:* -PKR ${order.totals.discountAmount.toLocaleString()}` : ''}\n🚚 *Shipping:* ${order.totals.isFreeShipping ? 'FREE Nationwide Delivery' : `PKR ${order.totals.shippingFee.toLocaleString()}`}\n💰 *Total Amount (COD):* *PKR ${order.totals.grandTotal.toLocaleString()}*\n\nPlease confirm my order and dispatch details. Thank you!`;
       }
       window.open(`https://wa.me/923395691212?text=${encodeURIComponent(msg)}`, '_blank');
     };
@@ -1264,13 +1346,7 @@ function closeMobileMenu() {
   const icon = document.getElementById('mobile-menu-icon');
 
   if (drawer && backdrop) {
-    if (currentLang === 'ur') {
-      drawer.classList.add('-translate-x-full');
-      drawer.classList.remove('translate-x-full');
-    } else {
-      drawer.classList.add('translate-x-full');
-      drawer.classList.remove('-translate-x-full');
-    }
+    drawer.classList.add(currentLang === 'ur' ? '-translate-x-full' : 'translate-x-full');
     backdrop.classList.remove('opacity-100');
     backdrop.classList.add('opacity-0');
     setTimeout(() => {
@@ -1462,12 +1538,12 @@ function showToast(message, type = 'success') {
 
   const toast = document.createElement('div');
   const icon = type === 'success' ? 'fa-circle-check text-emerald-500' :
-               type === 'error' ? 'fa-circle-exclamation text-red-500' :
-               'fa-circle-info text-amber-500';
+    type === 'error' ? 'fa-circle-exclamation text-red-500' :
+      'fa-circle-info text-amber-500';
 
   const bgColor = type === 'success' ? 'border-emerald-500 bg-stone-900 text-white' :
-                  type === 'error' ? 'border-red-500 bg-stone-900 text-white' :
-                  'border-amber-500 bg-stone-900 text-white';
+    type === 'error' ? 'border-red-500 bg-stone-900 text-white' :
+      'border-amber-500 bg-stone-900 text-white';
 
   toast.className = `toast flex items-center gap-3 px-4 py-3 rounded-xl border-l-4 ${bgColor} shadow-2xl text-xs sm:text-sm font-medium transition-all max-w-sm`;
   toast.innerHTML = `
