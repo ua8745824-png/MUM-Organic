@@ -926,8 +926,7 @@ function openCartDrawer() {
     setTimeout(() => {
       overlay.classList.remove('opacity-0');
       overlay.classList.add('opacity-100');
-      drawer.classList.remove('translate-x-full');
-      drawer.classList.remove('-translate-x-full');
+      drawer.classList.remove('translate-x-full', '-translate-x-full');
     }, 10);
     document.body.style.overflow = 'hidden';
   }
@@ -1037,6 +1036,10 @@ function checkoutViaWhatsApp() {
 
 // Populate Cities Dropdown
 function populateCheckoutCityDropdown() {
+  const select = document.getElementById('checkout-city');
+  if (!select) return;
+  const prevIndex = select.selectedIndex;
+
   const citiesEn = [
     'Islamabad', 'Rawalpindi', 'Taxila', 'Wah Cantt', 'Lahore', 'Karachi',
     'Peshawar', 'Faisalabad', 'Multan', 'Gujranwala', 'Sialkot', 'Abbottabad',
@@ -1051,14 +1054,15 @@ function populateCheckoutCityDropdown() {
     'رحیم یار خان', 'ساہیوال', 'اٹک', 'چکوال', 'جہلم', 'پاکستان کا دیگر شہر'
   ];
 
-  const select = document.getElementById('checkout-city');
-  if (!select) return;
-
   const list = (currentLang === 'ur') ? citiesUr : citiesEn;
   const placeholder = (currentLang === 'ur') ? 'شہر / ضلع منتخب کریں' : 'Select Delivery City / District';
 
   select.innerHTML = `<option value="">${placeholder}</option>` +
     list.map(c => `<option value="${c}">${c}</option>`).join('');
+
+  if (prevIndex > 0 && prevIndex < select.options.length) {
+    select.selectedIndex = prevIndex;
+  }
 }
 
 // Sync Checkout Summary Box & Checkout Form Items List with Cart
@@ -1328,8 +1332,7 @@ function openMobileMenu() {
     setTimeout(() => {
       backdrop.classList.remove('opacity-0');
       backdrop.classList.add('opacity-100');
-      drawer.classList.remove('translate-x-full');
-      drawer.classList.remove('-translate-x-full');
+      drawer.classList.remove('translate-x-full', '-translate-x-full');
     }, 10);
     document.body.style.overflow = 'hidden';
 
@@ -1346,7 +1349,13 @@ function closeMobileMenu() {
   const icon = document.getElementById('mobile-menu-icon');
 
   if (drawer && backdrop) {
-    drawer.classList.add(currentLang === 'ur' ? '-translate-x-full' : 'translate-x-full');
+    if (currentLang === 'ur') {
+      drawer.classList.add('-translate-x-full');
+      drawer.classList.remove('translate-x-full');
+    } else {
+      drawer.classList.add('translate-x-full');
+      drawer.classList.remove('-translate-x-full');
+    }
     backdrop.classList.remove('opacity-100');
     backdrop.classList.add('opacity-0');
     setTimeout(() => {
@@ -1460,6 +1469,26 @@ function setupEventListeners() {
     });
   }
 
+  // Backdrop click on Purity Modal to close
+  if (purityModal) {
+    purityModal.addEventListener('click', (e) => {
+      if (e.target === purityModal) {
+        purityModal.classList.add('hidden');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+
+  // Backdrop click on Order Success Modal to close
+  const orderSuccessModal = document.getElementById('order-success-modal');
+  if (orderSuccessModal) {
+    orderSuccessModal.addEventListener('click', (e) => {
+      if (e.target === orderSuccessModal) {
+        closeOrderSuccessModal();
+      }
+    });
+  }
+
   // Global Escape Key Listener for Modals
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
@@ -1555,8 +1584,12 @@ function showToast(message, type = 'success') {
   container.appendChild(toast);
 
   setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateY(10px)';
-    setTimeout(() => toast.remove(), 300);
+    if (toast && toast.parentElement) {
+      toast.style.opacity = '0';
+      toast.style.transform = 'translateY(10px)';
+      setTimeout(() => {
+        if (toast && toast.parentElement) toast.remove();
+      }, 300);
+    }
   }, 4000);
 }
