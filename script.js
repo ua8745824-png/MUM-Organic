@@ -32,7 +32,7 @@ const PRODUCTS_DATA = {
       shortName: '1kg Heritage Jar',
       weight: '1kg',
       weightKg: 1.0,
-      price: 4250,
+      price: 3500,
       originalPrice: 4800,
       image: 'assets/jar_1kg.jpg',
       badge: '⭐ Best Seller / Free Delivery Included',
@@ -40,7 +40,7 @@ const PRODUCTS_DATA = {
       servings: '~75-80 Servings',
       shelfLife: '12 Months',
       packaging: 'Gold-Embossed Food-Grade Plastic Jar',
-      description: 'Our signature 1kg family pack (PKR 4,000 + PKR 250 courier included for 100% Free Nationwide Delivery). Slow fire handi clarified for royal nutty aroma.',
+      description: 'Our signature 1kg family pack with 100% Free Nationwide Delivery included. Slow fire handi clarified for royal nutty aroma.',
       highlights: ['FREE Nationwide Delivery Included', 'Traditional Bilona Ghee', 'Rich in Vitamins A, D, E, K', 'Packaged in Taxila, Punjab'],
       addToCartText: 'Add to Cart',
       whatsAppOrderText: '1-Click WhatsApp Order'
@@ -91,7 +91,7 @@ const PRODUCTS_DATA = {
       shortName: '1 کلو گرام ہیریٹیج جار',
       weight: '1 کلوگرام',
       weightKg: 1.0,
-      price: 4250,
+      price: 3500,
       originalPrice: 4800,
       image: 'assets/jar_1kg.jpg',
       badge: '⭐ سب سے مقبول / مفت ڈلیوری شامل',
@@ -99,7 +99,7 @@ const PRODUCTS_DATA = {
       servings: '~75-80 سرونگز',
       shelfLife: '12 ماہ',
       packaging: 'گولڈ ایمباسڈ فوڈ گریڈ پلاسٹک جار',
-      description: 'پاکستانی گھرانوں کا سب سے پسندیدہ 1 کلو پیک (4000 روپے گھی + 250 روپے ڈلیوری شامل تاکہ پورے پاکستان میں مفت ڈلیوری حاصل ہو)۔ مٹی کی ہانڈی میں تیار۔',
+      description: 'پاکستانی گھرانوں کا سب سے پسندیدہ 1 کلو پیک (خصوصی رعایتی قیمت اور پورے پاکستان میں مفت ایکسپریس ڈلیوری شامل)۔ مٹی کی ہانڈی میں تیار۔',
       highlights: ['ملک بھر میں مفت ایکسپریس ڈلیوری شامل', 'روایتی بلونا دیسی گھی', 'وٹامنز A, D, E, K سے بھرپور', 'ٹیکسلا پنجاب کا خالص نذرانہ'],
       addToCartText: 'کارٹ میں شامل کریں',
       whatsAppOrderText: 'واٹس ایپ پر 1-کلک آرڈر'
@@ -409,7 +409,7 @@ let cart = JSON.parse(localStorage.getItem('mum_organic_cart')) || [
     id: 'mum-1kg',
     name: 'Heritage Family Pack (1kg)',
     nameUr: 'ہیریٹیج فیملی پیک (1 کلوگرام)',
-    price: 4250,
+    price: 3500,
     originalPrice: 4800,
     weight: '1kg',
     weightKg: 1.0,
@@ -418,10 +418,37 @@ let cart = JSON.parse(localStorage.getItem('mum_organic_cart')) || [
   }
 ];
 
+// Helper to keep cart prices synced with catalog
+function syncCartWithCatalog() {
+  if (Array.isArray(cart) && cart.length > 0) {
+    let changed = false;
+    cart = cart.map(item => {
+      const currentProd = PRODUCTS_DATA.en.find(p => p.id === item.id);
+      if (currentProd) {
+        if (item.price !== currentProd.price || item.originalPrice !== currentProd.originalPrice) {
+          changed = true;
+          return {
+            ...item,
+            price: currentProd.price,
+            originalPrice: currentProd.originalPrice,
+            weight: currentProd.weight,
+            weightKg: currentProd.weightKg
+          };
+        }
+      }
+      return item;
+    });
+    if (changed) {
+      localStorage.setItem('mum_organic_cart', JSON.stringify(cart));
+    }
+  }
+}
+
 let appliedPromo = JSON.parse(localStorage.getItem('mum_organic_promo')) || null;
 
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
+  syncCartWithCatalog();
   applyTheme(currentTheme);
   setLanguage(currentLang);
   setupEventListeners();
@@ -750,7 +777,7 @@ function calculateCartTotals() {
     }
   }
 
-  const isFreeShipping = totalWeightKg >= 1.0 || subtotal >= 4000 || totalItems === 0;
+  const isFreeShipping = totalWeightKg >= 1.0 || subtotal >= 3500 || totalItems === 0;
   const shippingFee = (totalItems === 0 || isFreeShipping) ? 0 : 250;
   const grandTotal = Math.max(0, subtotal - discountAmount + shippingFee);
 
